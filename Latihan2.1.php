@@ -1,0 +1,39 @@
+<?php
+class Guru {
+    var $nama_nama = array("de","ce","ve","re");
+    var $nama_guru ;
+    var $NIK ;
+    var $jabatan;
+    var $alamat; 
+}
+class Murid {
+    var $nama_siswa;
+    var $NIS;
+    var $kelas;
+    var $alamat;
+}
+class Kurikulim {
+    var $tahun_akademik;
+    var $sks_matkul;
+}
+class Mobil {
+    var $jumlahRoda = 4;
+    var $warna = "Merah";
+    var $harga = 120000000;
+    var $bahanBakar = "Pertamax";
+    var $merek = "a";
+
+    public function statusHarga(){
+        if ($this->harga > 50000000000) $status = "Mahal";
+        else $status = "Murah";
+        return $status;
+    }
+}
+
+$objekBMW = new Mobil;
+$objekTesla = new Mobil;
+$objekAudi = new Mobil;
+
+echo "Merek Mobil : " . $objekBMW->merek;
+echo "\n Harga mobil : " . $objekBMW->statusHarga();
+?>
