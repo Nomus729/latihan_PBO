@@ -45,5 +45,23 @@ echo "Besaran angsuran : Rp". $objekUtang1->Besar_angsuran."<br>";
 echo "Keterlambatan angsuran (Hari): ". $objekUtang1->hari_terlambat."<br>";
 echo "Denda keterlambatan :". $objekUtang1->besar_lambat."<br>";
 echo "Besaran pembayaran :". $objekUtang1->TotalPembayaranAngsuran()."<br>";
+echo "<br>";
 
+$objekUtang2 = new Angsuran();
+$objekUtang2->pinjaman = 2000000;
+$objekUtang2->lama_angsuran = 5;
+$objekUtang2->hari_terlambat = 40;
+$objekUtang2 ->pinjaman();
+$objekUtang2->angsuran();
+$objekUtang2->denda();
+
+echo "Besar pinjaman :". $objekUtang2->pinjaman."<br>";
+echo "TOtal bunga : ". "10%"."<br>";
+echo "Total pinjaman :". $objekUtang2->total_pinjaman."<br>";
+echo "Lama angsuran (Bulan):". $objekUtang2->lama_angsuran."<br>";
+echo "Besaran angsuran : Rp". $objekUtang2->Besar_angsuran."<br>";
+echo "Keterlambatan angsuran (Hari): ". $objekUtang2->hari_terlambat."<br>";
+echo "Denda keterlambatan :". $objekUtang2->besar_lambat."<br>";
+echo "Besaran pembayaran :". $objekUtang2->TotalPembayaranAngsuran()."<br>";
+echo "<br>";
 ?>
