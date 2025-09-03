@@ -39,10 +39,10 @@ $objekUtang1->denda();
 
 echo "Besar pinjaman :". $objekUtang1->pinjaman."<br>";
 echo "TOtal bunga : ". "10%"."<br>";
-echo "Total pinjaman :". $objekUtang1->total_pinjaman."<br>";
-echo "Lama angsuran (Bulan):". $objekUtang1->lama_angsuran."<br>";
+echo "Total pinjaman :". $objekUtang1 ->pinjaman()."<br>";
 echo "Besaran angsuran : Rp". $objekUtang1->Besar_angsuran."<br>";
-echo "Keterlambatan angsuran (Hari): ". $objekUtang1->hari_terlambat."<br>";
+echo "Lama angsuran (Bulan):". $objekUtang1->angsuran()."<br>";
+echo "Keterlambatan angsuran (Hari): ". $objekUtang1->denda()."<br>";
 echo "Denda keterlambatan :". $objekUtang1->besar_lambat."<br>";
 echo "Besaran pembayaran :". $objekUtang1->TotalPembayaranAngsuran()."<br>";
 echo "<br>";
