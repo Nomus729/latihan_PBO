@@ -1,94 +1,68 @@
 <?php
+//header('Content-Type: text/plain');
 
-class PolaSegitiga
-{
-    private int $tinggi;
+class BangunRuang {
+    private $jenis;
+    private $sisi;
+    private $jariJari;
+    private $tinggi;
 
-    public function __construct(int $tinggi = 5)
-    {
+    function setProperties($jenis, $sisi, $jariJari, $tinggi) {
+        $this->jenis = $jenis;
+        $this->sisi = $sisi;
+        $this->jariJari = $jariJari;
         $this->tinggi = $tinggi;
     }
 
-    public function setTinggi(int $newTinggi): void
-    {
-        if ($newTinggi > 0) {
-            $this->tinggi = $newTinggi;
+    function hitungVolume() {
+        $volume = 0;
+        switch ($this->jenis) {
+            case 'Bola':
+                $volume = (4/3) * M_PI * pow($this->jariJari, 3);
+                break;
+            case 'Kerucut':
+                $volume = (1/3) * M_PI * pow($this->jariJari, 2) * $this->tinggi;
+                break;
+            case 'Limas Segi Empat':
+                $volume = (1/3) * pow($this->sisi, 2) * $this->tinggi;
+                break;
+            case 'Kubus':
+                $volume = pow($this->sisi, 3);
+                break;
+            case 'Tabung':
+                $volume = M_PI * pow($this->jariJari, 2) * $this->tinggi;
+                break;
         }
-    }
-
-    public function getTinggi(): int
-    {
-        return $this->tinggi;
-    }
-
-    public function buatPolaSatu(): void
-    {
-        echo "<h3>Pola 1: Piramida</h3>";
-        for ($i = 1; $i <= $this->tinggi; $i++) {
-            for ($j = $i; $j < $this->tinggi; $j++) {
-                echo "&nbsp;&nbsp;";
-            }
-            for ($k = 1; $k <= (2 * $i - 1); $k++) {
-                echo "*";
-            }
-            echo "<br>";
-        }
-    }
-
-    public function buatPolaDua(): void
-    {
-        echo "<h3>Pola 2: Segitiga Siku-Siku (Gabungan)</h3>";
-        for ($i = 1; $i <= $this->tinggi; $i++) {
-            for ($j = 1; $j <= $i; $j++) {
-                echo "*";
-            }
-            echo "<br>";
-        }
-        for ($i = $this->tinggi - 1; $i >= 1; $i--) {
-            for ($j = 1; $j <= $i; $j++) {
-                echo "*";
-            }
-            echo "<br>";
-        }
-    }
-
-    public function buatPolaTiga(): void
-    {
-        echo "<h3>Pola 3: Belah Ketupat</h3>";
-        for ($i = 1; $i <= $this->tinggi; $i++) {
-            for ($j = $i; $j < $this->tinggi; $j++) {
-                echo "&nbsp;&nbsp;";
-            }
-            for ($k = 1; $k <= $i; $k++) {
-                echo "*";
-            }
-            echo "<br>";
-        }
-        for ($i = $this->tinggi - 1; $i >= 1; $i--) {
-            for ($j = $i; $j < $this->tinggi; $j++) {
-                echo "&nbsp;&nbsp;";
-            }
-            for ($k = 1; $k <= $i; $k++) {
-                echo "*";
-            }
-            echo "<br>";
-        }
+        return $volume;
     }
 }
 
-echo "<pre>";
-
-$generatorPola = new PolaSegitiga(5);
-
-$daftarPola = [
-    'buatPolaSatu',
-    'buatPolaDua',
-    'buatPolaTiga'
+$dataBangunRuang = [
+    ['jenis' => 'Bola', 'sisi' => 0, 'jari-jari' => 7, 'tinggi' => 0],
+    ['jenis' => 'Kerucut', 'sisi' => 0, 'jari-jari' => 14, 'tinggi' => 10],
+    ['jenis' => 'Limas Segi Empat', 'sisi' => 8, 'jari-jari' => 0, 'tinggi' => 24],
+    ['jenis' => 'Kubus', 'sisi' => 30, 'jari-jari' => 0, 'tinggi' => 0],
+    ['jenis' => 'Tabung', 'sisi' => 0, 'jari-jari' => 7, 'tinggi' => 10]
 ];
 
-foreach ($daftarPola as $metode) {
-    $generatorPola->$metode();
-    echo "<hr>";
+echo "<pre>";
+
+$judul = str_pad("Jenis Bangun Ruang", 23).str_pad("Sisi", 10) .
+          str_pad("Jari-jari", 15) .
+          str_pad("Tinggi", 15) .
+          str_pad("Volume", 20);
+
+echo $judul."\n";
+echo str_repeat("~", 100)."\n";
+
+for ($i=0;$i<count($dataBangunRuang);$i++) {
+    $data = $dataBangunRuang[$i];
+    $bangun = new BangunRuang();
+    $bangun->setProperties($data['jenis'], $data['sisi'], $data['jari-jari'], $data['tinggi']);
+    $volume = $bangun->hitungVolume();
+    $baris = str_pad($data['jenis'], 25).str_pad($data['sisi'], 10).str_pad($data['jari-jari'], 15).str_pad($data['tinggi'], 10).str_pad($volume, 20);
+
+    echo $baris . "\n";
 }
 
 ?>
