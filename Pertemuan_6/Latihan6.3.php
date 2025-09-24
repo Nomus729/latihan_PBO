@@ -1,10 +1,6 @@
 <?php
 echo "<h1>Konversi Suhu dari Celcius</h1>";
 
-if (isset($_GET['celcius']) && is_numeric($_GET['celcius'])) {
-
-    $nilaiCelcius = (float) $_GET['celcius'];
-
     class KonverterSuhu {
         private $celcius;
 
@@ -30,12 +26,14 @@ if (isset($_GET['celcius']) && is_numeric($_GET['celcius'])) {
                     echo "<br>";
                 }
             }
-            echo "\nSekian konfersi suhu yang bisa dilakukan<br>";
+            echo "\nSekian konfersi suhu yang bisa dilakukan<br>\n";
         }
     }
-
+    
+    echo "Masukan suhu dalam celcius = ";
+    $nilaiCelcius = trim(fgets(STDIN));
     $konverter = new KonverterSuhu($nilaiCelcius);
     $konverter->prosesKonversi();
 
-} 
+
 ?>
