@@ -53,4 +53,6 @@ echo "<b>Perilaku Kambing : </b><br/>";
 echo $kambing->Makan();
 echo $kambing->Bergerak();
 echo $kambing->Beranak();
+
+echo "Hallo"
 ?>
