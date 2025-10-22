@@ -22,8 +22,6 @@ class GajiPegawai{
             $data = $daftarGaji[$i];
             if ($data==$golongan){
                 $this->Gaji = $data;
-            }elseif($data==$golongan){
-                $this->Gaji = $data;
             }
         }
     }
